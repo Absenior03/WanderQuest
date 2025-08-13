@@ -168,7 +168,7 @@ const generateItinerary = async () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch(`http://localhost:4001/tours/${props.id}`);
+    const response = await fetch(`https://vwypfdkziv.us-east-1.awsapprunner.com/tours/${props.id}`);
     if (!response.ok) {
       throw new Error('Tour not found.');
     }
