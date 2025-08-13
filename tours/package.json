@@ -1,0 +1,18 @@
+{
+  "name": "wanderquest-tours-service",
+  "version": "1.0.0",
+  "description": "Microservice for managing tour packages.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.598.0",
+    "@aws-sdk/lib-dynamodb": "^3.598.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2"
+  }
+}
