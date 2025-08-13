@@ -139,7 +139,7 @@ const generateItinerary = async () => {
     const tripFocus = tour.value.customizations.find(c => c.id === 'focus')?.options[selectedFocusOption] || 'general sightseeing';
 
     try {
-        const aiServiceUrl='https://g8nswcxag7.execute-api.eu-north-1.amazonaws.com/default/WanderQuest-AI-Itinerary';
+        const aiServiceUrl='https://g8nswcxag7.execute-api.eu-north-1.amazonaws.com/default';
         
         const response = await fetch(aiServiceUrl, {
             method: 'POST',
