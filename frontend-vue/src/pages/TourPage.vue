@@ -168,7 +168,8 @@ const generateItinerary = async () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch(`https://vwypfdkziv.us-east-1.awsapprunner.com/tours/${props.id}`);
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/tours/${props.id}`;
+    const response = await fetch(apiUrl);
     if (!response.ok) {
       throw new Error('Tour not found.');
     }

@@ -52,7 +52,8 @@ const handleScroll = () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('https://vwypfdkziv.us-east-1.awsapprunner.com/tours');
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/tours`;
+    const response = await fetch(apiUrl);
     if (!response.ok) throw new Error('Could not connect to the server. Please ensure the backend is running.');
     tours.value = await response.json();
     window.addEventListener('scroll', handleScroll);
