@@ -1,11 +1,13 @@
 <template>
   <div>
-    <!-- Hero Section with Video Background -->
+    <!-- The new, dynamic morphing background -->
+    <div id="morphing-background" class="morphing-bg"></div>
+
+    <!-- Hero Section -->
     <div class="hero-section">
+      <!-- Video and content remain the same -->
       <video autoplay loop muted playsinline class="hero-video">
-        <!-- New, reliable video source -->
         <source src="https://videos.pexels.com/video-files/2794731/2794731-hd_1920_1080_25fps.mp4" type="video/mp4">
-        Your browser does not support the video tag.
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -18,17 +20,29 @@
       </div>
     </div>
 
-    <!-- The rest of your homepage template remains the same -->
+    <!-- All sections are now wrapped in a container to sit above the background -->
     <div class="relative z-10">
       <div id="tours" class="tours-section content-section">
-        <!-- ... tours section ... -->
+        <div class="tours-container">
+          <h2 class="section-title">Explore Our Adventures</h2>
+          <div v-if="loading" class="loading-spinner-container"><div class="spinner"></div></div>
+          <div v-if="error" class="error-message">
+            <p><strong>Failed to load adventures:</strong> {{ error }}</p>
+          </div>
+          <div v-if="tours.length" class="tours-grid">
+            <TourCard v-for="tour in tours" :key="tour.id" :tour="tour" class="list-item" />
+          </div>
+        </div>
       </div>
+
       <div id="reviews" class="content-section">
         <ReviewsSection />
       </div>
+      
       <div id="contact" class="content-section">
         <ContactSection />
       </div>
+      
       <Footer />
     </div>
   </div>
