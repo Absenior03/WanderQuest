@@ -35,6 +35,10 @@
         </div>
       </div>
 
+      <div id="carousel" class="content-section">
+        <FeaturedCarousel />
+      </div>
+
       <div id="reviews" class="content-section">
         <ReviewsSection />
       </div>
@@ -54,6 +58,7 @@ import TourCard from '../components/TourCard.vue';
 import ReviewsSection from '../components/ReviewsSection.vue';
 import ContactSection from '../components/ContactSection.vue';
 import Footer from '../components/Footer.vue';
+import FeaturedCarousel from '@/components/FeaturedCarousel.vue';
 
 // The script setup for fetching data remains the same
 const tours = ref([]);
