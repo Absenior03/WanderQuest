@@ -2,30 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Page transition animations */
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #0f172a; /* Fallback background */
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Staggered list animation for tour cards */
-.list-enter-active {
-  transition: all 0.4s ease-out;
+/* --- Morphing Background --- */
+.morphing-bg {
+  --color-one: 34, 211, 238; /* Initial Cyan */
+  --color-two: 14, 116, 144;
+  --y: 0px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: radial-gradient(circle at 50% var(--y), 
+    rgba(var(--color-one), 0.3), 
+    rgba(var(--color-two), 0.2) 40%, 
+    transparent 70%
+  );
+  transition: --color-one 1s ease, --color-two 1s ease;
 }
-.list-enter-from {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
+
+/* --- Content Sections --- */
+.content-section {
+  background-color: transparent; /* Crucial for seeing the background */
+  position: relative;
+  z-index: 1;
 }
-.list-leave-to {
-  opacity: 0;
+
+/* --- Header --- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
 }
-.list-leave-active {
+.header-nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #22d3ee; /* Cyan */
+  cursor: pointer;
+  width: fit-content;
+}
+.logo h1 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- Homepage Hero --- */
+.hero-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-video {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.5;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0f172a 20%, transparent 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 3.75rem;
+  letter-spacing: -0.025em;
+}
+.hero-title-accent {
+  color: #22d3ee; /* Cyan */
+}
+.hero-subtitle {
+  margin-top: 1.5rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.125rem;
+  color: #cbd5e1; /* Slate 300 */
 }
 @layer components {
   .tour-page-wrapper {
@@ -183,93 +271,6 @@
   .itinerary-day:hover {
     border-color: rgba(6, 182, 212, 0.5); /* hover:border-cyan-500/50 */
   }
-}
-
-/* Basic Reset and Font Setup */
-body {
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-  background-color: #0f172a; /* Dark Slate Blue */
-  color: white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* --- Header --- */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background-color: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-}
-.header-nav {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #22d3ee; /* Cyan */
-  cursor: pointer;
-  width: fit-content;
-}
-.logo h1 {
-  font-family: 'Playfair Display', serif;
-}
-
-/* --- Homepage Hero --- */
-.hero-section {
-  position: relative;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-.hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, #0f172a 10%, rgba(15, 23, 42, 0.5) 100%);
-  z-index: 1;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 1rem;
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: 3.75rem; /* ~6xl */
-  letter-spacing: -0.025em;
-}
-.hero-title-accent {
-  color: #22d3ee; /* Cyan */
-}
-.hero-subtitle {
-  margin-top: 1.5rem;
-  max-width: 42rem;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.125rem;
-  color: #cbd5e1; /* Slate 300 */
 }
 
 /* --- Tours Section --- */

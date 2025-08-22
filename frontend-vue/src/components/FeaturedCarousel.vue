@@ -14,9 +14,9 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 const images = ref([
   { src: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?q=80&w=2070&auto=format&fit=crop', alt: 'Santorini, Greece' },
-  { src: 'https://images.unsplash.com/photo-1519954737015-465830593644?q=80&w=1974&auto=format&fit=crop', alt: 'Kyoto, Japan' },
-  { src: 'https://images.unsplash.com/photo-1567182652513-862812f3702a?q=80&w=1974&auto=format&fit=crop', alt: 'Machu Picchu, Peru' },
-  { src: 'https://images.unsplash.com/photo-1604928141068-a183f21768d7?q=80&w=2070&auto=format&fit=crop', alt: 'Cairo, Egypt' },
+  { src: 'https://unsplash.com/photos/people-riding-on-boat-on-river-during-daytime-wJvUBkLU0pA?q=80&w=1974&auto=format&fit=crop', alt: 'Kyoto, Japan' },
+  { src: 'https://unsplash.com/photos/green-mountain-under-white-cloudy-sky-during-daytime-lRNW1UsIHXA?q=80&w=1974&auto=format&fit=crop', alt: 'Machu Picchu, Peru' },
+  { src: 'https://unsplash.com/photos/a-group-of-people-riding-horses-in-front-of-the-pyramids-e4EcnfvtWGE?q=80&w=2070&auto=format&fit=crop', alt: 'Cairo, Egypt' },
 ]);
 
 const currentIndex = ref(0);
