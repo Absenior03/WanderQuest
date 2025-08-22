@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // Initialize the Gemini client with your API key
 // IMPORTANT: You will set this API key as an environment variable in your Lambda function.
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash"});
 
 export const handler = async (event) => {
   // Allow requests from any origin (for development)
