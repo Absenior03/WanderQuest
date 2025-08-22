@@ -105,7 +105,7 @@ const handleScroll = () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:4001/tours');
+    const response = await fetch('https://vwypfdkziv.us-east-1.awsapprunner.com/tours');
     if (!response.ok) throw new Error('Could not connect to the server. Please ensure the backend is running.');
     tours.value = await response.json();
     window.addEventListener('scroll', handleScroll, { passive: true });
