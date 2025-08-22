@@ -13,10 +13,10 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const images = ref([
-  { src: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?q=80&w=2070&auto=format&fit=crop', alt: 'Santorini, Greece' },
-  { src: 'https://unsplash.com/photos/people-riding-on-boat-on-river-during-daytime-wJvUBkLU0pA', alt: 'Kyoto, Japan' },
-  { src: 'https://unsplash.com/photos/green-mountain-under-white-cloudy-sky-during-daytime-lRNW1UsIHXA', alt: 'Machu Picchu, Peru' },
-  { src: 'https://unsplash.com/photos/a-group-of-people-riding-horses-in-front-of-the-pyramids-e4EcnfvtWGE', alt: 'Cairo, Egypt' },
+  { src: 'https://images.pexels.com/photos/3889856/pexels-photo-3889856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Santorini, Greece' },
+  { src: 'https://images.pexels.com/photos/2440024/pexels-photo-2440024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Kyoto, Japan' },
+  { src: 'https://images.pexels.com/photos/208701/pexels-photo-208701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Machu Picchu, Peru' },
+  { src: 'https://images.pexels.com/photos/3959485/pexels-photo-3959485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Cairo, Egypt' },
 ]);
 
 const currentIndex = ref(0);
