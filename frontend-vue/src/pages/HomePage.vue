@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!-- The new, dynamic morphing background -->
     <div id="morphing-background" class="morphing-bg"></div>
 
+    <!-- Hero Section -->
     <div class="hero-section">
       <video autoplay loop muted playsinline class="hero-video">
-        <source src="https://videos.pexels.com/video-files/2794731/2794731-hd_1920_1080_25fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/2794731/2794731-hd_1920_1080_25fps.mp4" type="video/mp4"></source>
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -17,9 +19,10 @@
       </div>
     </div>
 
+    <!-- All sections are now wrapped in a single container to sit above the background -->
     <div class="relative z-10">
       <div id="tours" class="content-section">
-        <div class="tours-container">
+        <div class="content-container">
           <h2 class="section-title">Explore Our Adventures</h2>
           <div v-if="loading" class="loading-spinner-container"><div class="spinner"></div></div>
           <div v-if="error" class="error-message">
@@ -30,15 +33,19 @@
           </div>
         </div>
       </div>
+
       <div id="featured" class="content-section">
         <FeaturedCarousel />
       </div>
+
       <div id="reviews" class="content-section">
         <ReviewsSection />
       </div>
+      
       <div id="contact" class="content-section">
         <ContactSection />
       </div>
+      
       <Footer />
     </div>
   </div>
@@ -56,10 +63,12 @@ const tours = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
+// --- New Logic for Seamless Morphing Background ---
 const handleScroll = () => {
   const bg = document.getElementById('morphing-background');
   if (!bg) return;
-  
+
+  // Animate scroll-to-reveal for cards
   const cards = document.querySelectorAll('.list-item');
   cards.forEach(card => {
     if (card.getBoundingClientRect().top < window.innerHeight - 100) {
@@ -67,34 +76,27 @@ const handleScroll = () => {
     }
   });
 
+  // Animate background morphing
   const scrollY = window.scrollY;
-  const screenHeight = window.innerHeight;
-  
-  const toursSection = document.getElementById('tours');
-  const featuredSection = document.getElementById('featured');
-  const reviewsSection = document.getElementById('reviews');
-  const contactSection = document.getElementById('contact');
+  bg.style.setProperty('--y', `${scrollY}px`);
 
-  const toursTop = toursSection.offsetTop;
-  const featuredTop = featuredSection.offsetTop;
-  const reviewsTop = reviewsSection.offsetTop;
-  const contactTop = contactSection.offsetTop;
+  const sections = [
+    { id: '#tours', colors: ['34, 211, 238', '14, 116, 144'] }, // Cyan
+    { id: '#featured', colors: ['168, 85, 247', '107, 33, 168'] }, // Purple
+    { id: '#reviews', colors: ['132, 204, 22', '77, 124, 15'] }, // Lime
+    { id: '#contact', colors: ['234, 88, 12', '154, 52, 18'] } // Orange
+  ];
 
-  if (scrollY < featuredTop - screenHeight / 1.5) {
-    bg.style.setProperty('--color-one', '34, 211, 238'); // Cyan
-    bg.style.setProperty('--color-two', '14, 116, 144');
-  } else if (scrollY < reviewsTop - screenHeight / 1.5) {
-    bg.style.setProperty('--color-one', '168, 85, 247'); // Purple
-    bg.style.setProperty('--color-two', '107, 33, 168');
-  } else if (scrollY < contactTop - screenHeight / 1.5) {
-    bg.style.setProperty('--color-one', '132, 204, 22'); // Lime
-    bg.style.setProperty('--color-two', '77, 124, 15');
-  } else {
-    bg.style.setProperty('--color-one', '234, 88, 12'); // Orange
-    bg.style.setProperty('--color-two', '154, 52, 18');
+  let currentSection = sections[0];
+  for (const section of sections) {
+    const el = document.querySelector(section.id);
+    if (el && el.offsetTop <= scrollY + window.innerHeight / 2) {
+      currentSection = section;
+    }
   }
   
-  bg.style.setProperty('--y', `${scrollY}px`);
+  bg.style.setProperty('--color-one', currentSection.colors[0]);
+  bg.style.setProperty('--color-two', currentSection.colors[1]);
 };
 
 onMounted(async () => {
