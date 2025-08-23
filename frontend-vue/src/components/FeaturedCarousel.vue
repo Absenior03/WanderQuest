@@ -13,10 +13,10 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const images = ref([
-  { src: 'https://images.pexels.com/photos/3889856/pexels-photo-3889856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Santorini, Greece' },
-  { src: 'https://images.pexels.com/photos/2440024/pexels-photo-2440024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Kyoto, Japan' },
-  { src: 'https://images.pexels.com/photos/208701/pexels-photo-208701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Machu Picchu, Peru' },
-  { src: 'https://images.pexels.com/photos/3959485/pexels-photo-3959485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Cairo, Egypt' },
+  { src: 'https://images.pexels.com/photos/161853/santorini-greece-village-church-161853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Santorini, Greece' },
+  { src: 'https://images.pexels.com/photos/2193300/pexels-photo-2193300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Kyoto, Japan' },
+  { src: 'https://images.pexels.com/photos/681387/pexels-photo-681387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Machu Picchu, Peru' },
+  { src: 'https://images.pexels.com/photos/5472242/pexels-photo-5472242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', alt: 'Cairo, Egypt' },
 ]);
 
 const currentIndex = ref(0);

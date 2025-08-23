@@ -11,12 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Morphing Background --- */
 .morphing-bg {
-  --color-one: 34, 211, 238; /* Initial Cyan */
+  --color-one: 34, 211, 238;
   --color-two: 14, 116, 144;
   --y: 0px;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -31,9 +29,8 @@ body {
   transition: --color-one 1s ease, --color-two 1s ease;
 }
 
-/* --- Content Sections --- */
 .content-section {
-  background-color: transparent; /* Crucial for seeing the background */
+  background-color: transparent;
   position: relative;
   z-index: 1;
 }

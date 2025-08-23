@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import Header from './components/Header.vue';
+import Header from './components/Navbar.vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const goHome = () => router.push('/');
