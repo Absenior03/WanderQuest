@@ -28,7 +28,7 @@ body {
 .aurora-blob {
   position: absolute;
   border-radius: 50%;
-  transition: transform 0.2s ease-out, background 1.5s ease;
+  transition: transform 0.2s ease-out, bg 1.5s ease;
 }
 
 #aurora-blob-1 {
