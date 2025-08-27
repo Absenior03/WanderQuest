@@ -24,7 +24,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { StripeElements, useStripe } from 'vue-stripe';
+import { StripeElements } from "vue-stripe";
 import { loadStripe } from '@stripe/stripe-js';
 
 const props = defineProps({
