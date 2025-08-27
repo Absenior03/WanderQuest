@@ -6,7 +6,7 @@
       
       <form @submit.prevent="handleSubmit">
         <div class="bg-white p-4 rounded-md">
-          <stripe-elements ref="elementsRef" :stripe="stripe" :options="elementsOptions" />
+          <StripeElements :stripe="stripe" :options="elementsOptions" ref="elementsRef" />
         </div>
         
         <button 
@@ -24,7 +24,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { StripeElements } from "vue-stripe";
+import { StripeElements } from 'vue-stripe';
 import { loadStripe } from '@stripe/stripe-js';
 
 const props = defineProps({
@@ -44,10 +44,10 @@ const elementsOptions = {
     theme: 'night',
     labels: 'floating',
     variables: {
-      colorPrimary: '#06b6d4', // cyan
-      colorBackground: '#1e293b', // slate-800
-      colorText: '#e2e8f0', // slate-200
-      colorDanger: '#f87171', // red-400
+      colorPrimary: '#06b6d4',
+      colorBackground: '#1e293b',
+      colorText: '#e2e8f0',
+      colorDanger: '#f87171',
       fontFamily: 'Lato, sans-serif',
       borderRadius: '8px',
     },
@@ -67,7 +67,7 @@ const handleSubmit = async () => {
   const { error } = await stripe.value.confirmPayment({
     elements: elementsRef.value.elements,
     confirmParams: {
-      return_url: window.location.href, // Redirect back to the same page
+      return_url: window.location.href,
     },
   });
 
@@ -75,8 +75,6 @@ const handleSubmit = async () => {
     errorMessage.value = error.message;
     isLoading.value = false;
   } else {
-    // This part is usually handled by Stripe's redirect, but we can emit success here
-    // if the redirect doesn't happen (e.g., for 3D Secure).
     emit('payment-success');
   }
 };
