@@ -6,6 +6,7 @@
       
       <form @submit.prevent="handleSubmit">
         <div class="bg-white p-4 rounded-md">
+          <!-- The component is used directly in the template -->
           <StripeElements :stripe="stripe" :options="elementsOptions" ref="elementsRef" />
         </div>
         
@@ -24,7 +25,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { StripeElements } from 'vue-stripe';
 import { loadStripe } from '@stripe/stripe-js';
 
 const props = defineProps({
